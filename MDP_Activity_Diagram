@@ -1,0 +1,58 @@
+digraph MDP_Activity_Diagram {
+	bgcolor=white nodesep=0.6 rankdir=TB ranksep=0.8 splines=ortho
+	node [color=black fontname=Arial fontsize=12 style=filled]
+	Start [label=START fillcolor="#90EE90" shape=circle]
+	Init [label="Initialize
+MDP" fillcolor="#87CEFA" shape=box]
+	State [label="Define
+States
+(S1,S2,S3)" fillcolor="#FFFACD" shape=box]
+	Action [label="Define
+Actions
+(A1,A2)" fillcolor="#FFFACD" shape=box]
+	TP [label="Store Transition
+Probabilities" fillcolor="#D8BFD8" shape=box]
+	Reward [label="Store
+Reward Matrix" fillcolor="#F4A460" shape=box]
+	Display [label="Display States,
+Actions,
+Matrices" fillcolor="#AFEEEE" shape=box]
+	Decision [label="More
+States?" fillcolor="#FFD700" shape=diamond]
+	Current [label="Select
+Current State" fillcolor="#E6E6FA" shape=box]
+	Choose [label="Choose
+Action" fillcolor="#E6E6FA" shape=box]
+	Transition [label="Apply
+Transition
+Probability" fillcolor="#98FB98" shape=box]
+	Next [label="Move to
+Next State" fillcolor="#98FB98" shape=box]
+	RewardCalc [label="Receive
+Reward" fillcolor="#FFB6C1" shape=box]
+	Expected [label="Calculate
+Expected Reward" fillcolor="#87CEEB" shape=box]
+	Summary [label="Generate
+Summary Table" fillcolor="#FFA07A" shape=box]
+	Visual [label="Visualize
+Grid Environment
+& State Diagram" fillcolor="#ADD8E6" shape=box]
+	End [label=END fillcolor="#90EE90" shape=doublecircle]
+	Start -> Init
+	Init -> State
+	State -> Action
+	Action -> TP
+	TP -> Reward
+	Reward -> Display
+	Display -> Decision
+	Decision -> Current [label=Yes]
+	Current -> Choose
+	Choose -> Transition
+	Transition -> Next
+	Next -> RewardCalc
+	RewardCalc -> Expected
+	Expected -> Decision
+	Decision -> Summary [label=No]
+	Summary -> Visual
+	Visual -> End
+}
